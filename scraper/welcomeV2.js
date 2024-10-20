@@ -7,7 +7,7 @@ exports.config = {
     author: 'Lance Cochangco',
     description: 'Generate a welcome card with custom text',
     category: 'canvas',
-    link: ['/welcomeV2?nickname=lanceajiro&secondText=Have a nice day&avatar=https://imgur.com/xwCoQ5H.jpg']
+    link: ['/welcomeV2?nickname=Charles&secondText=Have a nice day&avatar=https://imgur.com/xwCoQ5H.jpg']
 };
 
 // Initialize API to create welcome image
