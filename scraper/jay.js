@@ -2,11 +2,11 @@ const { G4F } = require("g4f");
 const g4f = new G4F();
 
 exports.config = {
-    name: 'jea',
+    name: 'jay',
     author: 'Lance Cochangco',
-    description: 'Chat with Jea a personal AI girlfriend',
+    description: 'Chat with jay a personal AI boy',
     category: 'ai',
-    link: ['/jea?question=hi']
+    link: ['/jay?question=hi']
 };
 
 exports.initialize = async function ({ req, res }) { 
