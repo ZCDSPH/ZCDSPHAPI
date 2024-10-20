@@ -7,7 +7,7 @@ exports.config = {
     author: 'Lance Cochangco',
     description: 'Generate a goodbye image',
     category: 'canvas',
-    link: ['/goodbye?pp=https://i.imgur.com/xwCoQ5H.jpeg&nama=Lance&bg=https://i.ibb.co/4YBNyvP/images-76.jpg&member=25']
+    link: ['/goodbye?pp=https://i.imgur.com/xwCoQ5H.jpeg&nama=Jay&bg=https://i.ibb.co/4YBNyvP/images-76.jpg&member=25']
 };
 
 exports.initialize = async function ({ req, res }) {
