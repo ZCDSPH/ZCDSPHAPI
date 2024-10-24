@@ -2,13 +2,11 @@ const nexo = require("nexo-aio-downloader");
 
 exports.config = {
     name: 'downloader',
-    author: 'Lance Cochangco',
+    author: 'Marjhun Baylon',
     description: 'Downloads media from various platforms like Twitter, Instagram, Facebook, etc.',
     category: 'tools',
     link: ['/downloader']
 };
-
-// Supported platforms and their variations
 const supportedPlatforms = {
     twitter: ["twitter.com", "x.com", "www.twitter.com", "www.x.com"],
     instagram: ["instagram.com", "www.instagram.com"],
@@ -26,15 +24,12 @@ exports.initialize = async function ({ req, res }) {
             return res.status(400).json({ error: "Please add ?url=media_url_here" });
         }
 
-        // Normalize the URL: ensure it starts with https://
+        
         if (!url.startsWith("http://") && !url.startsWith("https://")) {
             url = "https://" + url;
         }
-
-        // Remove 'www.' from the URL for consistent pattern matching
         const normalizedUrl = url.replace(/^https?:\/\/(www\.)?/, 'https://');
 
-        // Detect platform by checking if the normalized URL matches any of the supported platform patterns
         let platform = Object.keys(supportedPlatforms).find(key => 
             supportedPlatforms[key].some(pattern => normalizedUrl.includes(pattern.replace("www.", "")))
         );
@@ -53,8 +48,8 @@ exports.initialize = async function ({ req, res }) {
                 break;
             case 'facebook':
                 if (url.includes('/share/v/')) {
-                    // Handle shared post URLs specifically
-                    result = await nexo.facebook(url); // Assuming `nexo.facebook` supports shared videos
+                    
+                    result = await nexo.facebook(url);
                 } else {
                     result = await nexo.facebook(url);
                 }
