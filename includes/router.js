@@ -3,28 +3,29 @@ const { readdirSync } = require('fs-extra');
 const path = require('path');
 const log = require('./log');
 const compression = require('compression');
-const srcPath = path.join(__dirname, "../scraper/");
 
-// Use compression middleware
+const srcPath = path.join(__dirname, "../scraper/");
 router.use(compression());
 
-// Cache API modules
 const apiCache = new Map();
 
-// Preload API modules
-const apiFiles = readdirSync(srcPath).filter(file => file.endsWith(".js"));
-apiFiles.forEach(file => {
-  const filePath = path.join(srcPath, file);
-  const api = require(filePath);
-  if (api.config && api.initialize) {
-    apiCache.set(api.config.name, api);
-  }
-});
+const loadApiModules = (directory) => {
+  const apiFiles = readdirSync(directory).filter(file => file.endsWith(".js"));
+  apiFiles.forEach(file => {
+    const filePath = path.join(directory, file);
+    const api = require(filePath);
+    if (api.config && api.initialize) {
+      apiCache.set(api.config.name, api);
+      log.main(`Successfully loaded ${api.config.name}`);
+    }
+  });
+};
 
-// Set up routes
-let n = 0;
+loadApiModules(srcPath);
+
 apiCache.forEach((api, name) => {
   const routePath = `/api/${name}`;
+  
   router.get(routePath, async (req, res) => {
     try {
       await api.initialize({ req, res, log });
@@ -33,15 +34,15 @@ apiCache.forEach((api, name) => {
       res.status(500).send("An error occurred");
     }
   });
-  if (global.api && global.api instanceof Map) {
+
+  if (global.api instanceof Map) {
     global.api.set(name, api);
   } else {
     console.warn("global.api is not a Map. Skipping setting API in global scope.");
   }
-  n++;
-  log.main(`Successfully loaded ${name}`);
 });
 
-  log.main(`Successfully loaded ${n} API${n !== 1 ? 's' : ''}`);
+const apiCount = apiCache.size;
+log.main(`Successfully loaded ${apiCount} API${apiCount !== 1 ? 's' : ''}`);
 
 module.exports = router;
