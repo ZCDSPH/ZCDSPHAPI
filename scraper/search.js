@@ -2,7 +2,7 @@ const DDG = require('duck-duck-scrape');
 
 exports.config = {
     name: 'search',
-    author: 'Lance Cochangco',
+    author: 'Marjhun Baylon',
     description: 'Search for a topic on DuckDuckGo',
     category: 'tools',
     link: ['/search?query=who is Jose Rizal?']
@@ -28,7 +28,7 @@ exports.initialize = async function ({ req, res, log }) {
             });
         }
 
-        // Get the first 5 results or less if fewer results are available
+        
         const numResults = Math.min(5, searchResults.results.length);
         const formattedResults = [];
 
@@ -36,7 +36,7 @@ exports.initialize = async function ({ req, res, log }) {
             const result = searchResults.results[i];
             formattedResults.push({
                 title: result.title,
-                description: result.description.replace(/<\/?b>/g, ""), // Remove both opening and closing b tags
+                description: result.description.replace(/<\/?b>/g, ""), 
                 source: result.hostname,
                 url: result.url
             });
