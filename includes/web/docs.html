@@ -5,114 +5,85 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>API Dashboard</title>
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-            margin: 0;
-        }
-        #wrapper {
-            display: flex;
-        }
-        .sidebar {
-            background-color: #343a40;
-            color: #adb5bd;
-            width: 250px;
-            padding: 20px;
-        }
-        .sidebar h3 {
-            color: #ffffff;
-            margin-bottom: 20px;
-        }
-        .sidebar .nav-link {
-            color: #adb5bd;
-            text-decoration: none;
-            display: block;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin: 5px 0;
-        }
-        .sidebar .nav-link:hover {
-            background-color: #495057;
-            color: #ffffff;
-        }
-        #content-wrapper {
-            flex-grow: 1;
-            padding: 20px;
-        }
-        .header {
-            background-color: #ffffff;
-            border-bottom: 1px solid #dee2e6;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .header h4 {
-            margin: 0;
-        }
-        .card {
-            background-color: #ffffff;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            padding: 20px;
-        }
-        .card-title {
-            margin: 0 0 10px;
-        }
-        .footer {
-            text-align: center;
-            padding: 15px;
-            background-color: #ffffff;
-            border-top: 1px solid #dee2e6;
-            margin-top: auto;
-        }
-        .img-profile {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-    </style>
+    <title id="page-title">Loading...</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.8/font-awesome-animation.min.css"/>
+    <link href="https://cdn.jsdelivr.net/gh/lanceajiro/Jiro-Assets@refs/heads/main/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/lanceajiro/Jiro-Assets@refs/heads/main/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/lanceajiro/Jiro-Assets@refs/heads/main/css/default.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/lanceajiro/Jiro-Assets@refs/heads/main/css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body id="page-top" class="dark-mode">
     <div id="wrapper">
-        <nav class="sidebar">
-            <h3>Dashboard</h3>
-            <a class="nav-link active" href="#">Home</a>
-            <a class="nav-link" href="#">API Documentation</a>
-            <a class="nav-link" href="#">Settings</a>
-        </nav>
-
-        <div id="content-wrapper">
-            <div class="header">
-                <h4>Welcome to the API Dashboard</h4>
-                <img class="img-profile" src="https://i.imgur.com/xwCoQ5H.jpeg" alt="Profile Photo">
+        <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+            <div class="sidebar-brand d-flex align-items-center justify-content-center">
+                <div class="sidebar-brand-text mx-3 text-primary-custom" id="config-name">Loading...</div>
             </div>
-
-            <div class="card">
-                <h5 class="card-title">Overview</h5>
-                <p>Explore our APIs by clicking on the categories in the sidebar to find the one you need.</p>
-            </div>
-
-            <div class="row">
-                <div class="card" style="flex: 1; margin-right: 10px;">
-                    <h6 class="card-title">AVAILABLE ENDPOINTS</h6>
-                    <p id="totalApis">Loading...</p>
+            <hr class="sidebar-divider my-0">
+        </ul>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+                    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <ul class="navbar-nav ml-auto">
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
+                                <img class="img-profile rounded-circle" id="profile-photo" src="https://i.imgur.com/xwCoQ5H.jpeg" style="width: 40px; height: 40px;">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="container-fluid" id="container-wrapper">
+                    <div class="row">
+                        <div class="col-xl-12 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h2 class="card-title text-primary-custom mb-4" id="welcome-title">Loading...</h2>
+                                    <p class="mb-0">Explore our APIs by clicking on the categories in the sidebar.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="stats-title" style="font-size: 0.8rem;">AVAILABLE ENDPOINTS</h6>
+                                    <p class="stats-value mb-0" id="totalApis" style="font-size: 1.2rem;">Loading...</p>
+                                    <i class="fas fa-server card-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h6 class="stats-title" style="font-size: 0.8rem;">CATEGORIES</h6>
+                                    <p class="stats-value mb-0" id="apiCategories" style="font-size: 1.2rem;">Loading...</p>
+                                    <i class="fas fa-list-alt card-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card" style="flex: 1;">
-                    <h6 class="card-title">CATEGORIES</h6>
-                    <p id="apiCategories">Loading...</p>
-                </div>
             </div>
+            <footer class="sticky-footer">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                         <i class="✞"></i> <a href="https://www.facebook.com/marjhuncutieee" target="_blank" style="color: #3b82f6;">ZCDS PH - MARJHUN BAYLON</a>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
 
-    <div class="footer">
-        <span style="color: red;">✟</span> by <a href="https://www.facebook.com/marjhuncutieee" target="_blank" style="color: #3b82f6;">ZCDS PH - MARJHUN BAYLON</a>
-    </div>
+    <script src="https://cdn.jsdelivr.net/gh/lanceajiro/Jiro-Assets@refs/heads/main/vendor/jquery/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lanceajiro/Jiro-Assets@refs/heads/main/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lanceajiro/Jiro-Assets@refs/heads/main/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lanceajiro/Jiro-Assets@refs/heads/main/js/ruang-admin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lanceajiro/Jiro-Assets@refs/heads/main/dono.js"></script>
 </body>
 
 </html>
